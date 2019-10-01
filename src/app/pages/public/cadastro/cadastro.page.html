@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="app">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"> </ion-back-button>
+    </ion-buttons>
+    <ion-title>Nova conta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img src="../../../../assets/app.svg" />
+  <ion-item>
+    <ion-label position="floating">Nome</ion-label>
+    <ion-input [(ngModel)]="usuario.nome"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">E-mail</ion-label>
+    <ion-input [(ngModel)]="usuario.email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Senha</ion-label>
+    <ion-input type="password" [(ngModel)]="usuario.senha"></ion-input>
+  </ion-item>
+  <ion-button color="app" expand="block" (click)="cadastrar()" [disabled]="!usuario.valid">
+    <ion-icon name="add" slot="start"></ion-icon>
+    Gravar
+  </ion-button>
+</ion-content>
