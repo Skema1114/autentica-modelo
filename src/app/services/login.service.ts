@@ -3,17 +3,23 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Usuario } from '../models/Usuario';
 import { AlertService } from './alert.service';
 import { Router } from '@angular/router';
+import { FirebaseApp } from '@angular/fire';
+import { first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+  private usuarioLogado: firebase.User;
+
   constructor(private af: AngularFireAuth, private al: AlertService, private route: Router) {}
 
   public async login(email: string, senha: string) {
     const loading = await this.al.loading();
     this.af.auth.signInWithEmailAndPassword(email, senha).then(
       user => {
+        // QUANDO LOGA A VARIAVEL RECEBE O USER
+        this.usuarioLogado = this.af.auth.currentUser;
         loading.dismiss();
         this.route.navigate(['administracao']);
       },
@@ -25,6 +31,8 @@ export class LoginService {
   }
 
   public logout() {
+    // A VARIAVEL DO USUARIO LOGADO É NULADA PRA DESLOGAR O USER DA VARIAVEL
+    this.usuarioLogado = null;
     this.af.auth.signOut();
     this.route.navigate(['login']);
   }
@@ -59,5 +67,11 @@ export class LoginService {
         console.log(erro);
       }
     );
+  }
+
+  public async isLogado(): Promise<boolean> {
+    this.usuarioLogado = await this.af.authState.pipe(first()).toPromise();
+    // CURRENT USER ARMAZENA O USUARIO LOGHADO NA APLICAÇAÕ
+    return this.usuarioLogado !== null;
   }
 }
