@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-administracao',
@@ -7,7 +8,11 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./administracao.page.scss']
 })
 export class AdministracaoPage implements OnInit {
-  constructor(private login: LoginService) {}
+  usuarioLogado: firebase.User;
+  constructor(private login: LoginService, private menu: MenuController) {
+    this.usuarioLogado = login.usuarioLogado;
+    menu.enable(true);
+  }
 
   ngOnInit() {}
 

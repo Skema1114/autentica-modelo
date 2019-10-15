@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="app">
+    <ion-title>carro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Placa</ion-label>
+        <ion-input [(ngModel)]="carroCorrente.placa"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Modelo</ion-label>
+        <ion-input [(ngModel)]="carroCorrente.modelo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Ano</ion-label>
+        <ion-input [(ngModel)]="carroCorrente.ano"></ion-input>
+      </ion-item>
+      <ion-button expand="block" color="app" (click)="gravar()">Salvar</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list *ngFor="let item of carros | async"> Placa: {{ item.placa }} </ion-list>
+</ion-content>

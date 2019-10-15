@@ -1,3 +1,20 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <!-- AQUI EMBAIXO TA O CODIGO DO MENU DE DESLIZAR -->
+  <ion-split-pane>
+    <ion-menu disabled="true">
+      <ion-header>
+        <ion-toolbar color="app">
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/cadastro']">
+            Cadastro
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
 </ion-app>

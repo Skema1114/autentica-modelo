@@ -1,7 +1,8 @@
 <ion-header>
   <ion-toolbar color="app">
     <ion-buttons>
-      <ion-title>Administração</ion-title>
+      <ion-menu-button></ion-menu-button>
+      <ion-title>{{ usuarioLogado.displayName }}</ion-title>
       <ion-icon name="log-out" slot="end" padding (click)="sair()"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
