@@ -3,4 +3,5 @@ export class Carro {
   ano: number;
   modelo: string;
   cor: string;
+  uid?: string;
 }

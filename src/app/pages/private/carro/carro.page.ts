@@ -19,7 +19,16 @@ export class CarroPage implements OnInit {
 
   ngOnInit() {}
 
+  public editar(carroEditado) {
+    this.carroCorrente = carroEditado;
+  }
+
   public gravar(): void {
     this.fs.gravar(this.carroCorrente);
+    this.carroCorrente = new Carro();
+  }
+
+  public apagar(uid: string) {
+    this.fs.remover(uid);
   }
 }

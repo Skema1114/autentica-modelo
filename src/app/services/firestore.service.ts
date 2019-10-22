@@ -10,7 +10,20 @@ export class FirestoreService {
   constructor(private firestore: AngularFirestore) {}
 
   public gravar(carro: Carro) {
-    this.firestore.collection('carros').add({ ...carro });
+    // VERIFIOCA SE TEM ID
+    if (carro.uid) {
+      // SE TRATA DE UMA ATUALIZAÇÃO
+      const url = 'carros/' + carro.uid;
+      this.firestore.doc(url).update({ ...carro });
+    } else {
+      // CRIA UMA NOVA ENTRADA
+      this.firestore.collection('carros').add({ ...carro });
+    }
+  }
+
+  public remover(uid: string) {
+    const url = 'carros/' + uid;
+    this.firestore.doc(url).delete();
   }
 
   public listar() {
