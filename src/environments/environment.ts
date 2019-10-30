@@ -9,7 +9,7 @@ export const environment = {
     authDomain: 'auth-iffar.firebaseapp.com',
     databaseURL: 'https://auth-iffar.firebaseio.com',
     projectId: 'auth-iffar',
-    storageBucket: '',
+    storageBucket: 'auth-iffar.appspot.com',
     messagingSenderId: '186757373750',
     appId: '1:186757373750:web:38295c7beac616120a9d97'
   }

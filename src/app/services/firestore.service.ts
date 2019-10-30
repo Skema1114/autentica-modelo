@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Carro } from '../models/Carro';
 import { map } from 'rxjs/operators';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirestoreService {
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore, private storage: AngularFireStorage) {}
 
   public gravar(carro: Carro) {
     // VERIFIOCA SE TEM ID
@@ -39,5 +40,15 @@ export class FirestoreService {
           })
         )
       );
+  }
+  public enviarFoto(foto: string, carroUid: string) {
+    const url = `fotos/${carroUid}/${new Date().getTime()}.jpg`;
+
+    this.storage
+      .ref(url)
+      .putString(foto, 'base64', { contentType: 'image/jpg' })
+      .then(resp => {
+        console.log('envio finalizado!', resp);
+      });
   }
 }

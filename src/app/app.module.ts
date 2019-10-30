@@ -16,6 +16,11 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
+// ++++++ IMPORTANDO A CAMERA, MAS ANTES TEM QUE EXECUTAR 2 COMANDOS NO TERMINAL
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -23,15 +28,15 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-
     AngularFireModule.initializeApp(environment.fireConfig),
     AngularFireAuthModule,
-
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireStorageModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

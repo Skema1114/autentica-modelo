@@ -46,7 +46,7 @@
       <ion-item-sliding *ngFor="let item of carros | async">
         <ion-item>
           <ion-avatar>
-            <ion-icon name="home"></ion-icon>
+            <ion-icon name="image" (click)="tirarFoto(item.uid)"></ion-icon>
           </ion-avatar>
 
           <ion-label> Id: {{ item.uid }} + "/n" </ion-label>
